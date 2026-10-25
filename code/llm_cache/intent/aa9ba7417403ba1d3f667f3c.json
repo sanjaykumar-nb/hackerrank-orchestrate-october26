@@ -1,0 +1,175 @@
+{
+  "key": "aa9ba7417403ba1d3f667f3cf75c4febb97e8702d2e8dd63505ddfc47a9cf39b",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id, d, and k: one of deletion, verify_deletion, access, export, correction, marketing_opt_out, account_help, other.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] Please erase the account linked to this email address. Please follow the applicable retention and deletion requirements for the account. Please contact me if you need information to verify the request.\n[t1] Please erase the account linked to this email address. Please handle any copies that fall within the scope of the deletion request. Let me know when the request has been completed.\n[t2] Please erase the account linked to this email address. Please handle any copies that fall within the scope of the deletion request. Please confirm when the review is complete.\n[t3] Please erase the account linked to this email address. Please handle any copies that fall within the scope of the deletion request. Please let me know once the request has been reviewed.\n[t4] Please erase the account linked to this email address. Please include information linked through current or earlier account identifiers. A short confirmation when the process is complete is sufficient.\n[t5] Please erase the account linked to this email address. Please include information linked through current or earlier account identifiers. Let me know when the request has been completed.\n[t6] Please erase the account linked to this email address. Please include records associated with the account under your privacy process. Please confirm the result after completing the required checks.\n[t7] Please erase the account linked to this email address. Please include records associated with the account under your privacy process. Please let me know once the request has been reviewed.\n[t8] Please erase the account linked to this email address. Please process this under the standard personal-data deletion procedure. A short confirmation when the process is complete is sufficient.\n[t9] Please erase the account linked to this email address. Please process this under the standard personal-data deletion procedure. I would appreciate confirmation of the final outcome.\n[t10] Please erase the account linked to this email address. Please process this under the standard personal-data deletion procedure. Please confirm the result after completing the required checks.\n[t11] Please erase the account linked to this email address. Please process this under the standard personal-data deletion procedure. Please confirm when the review is complete.\n[t12] Please erase the account linked to this email address. Please process this under the standard personal-data deletion procedure. Please send a confirmation after the process finishes.\n[t13] Please erase the account linked to this email address. Please review any identifiers connected to this account as part of the request. A short confirmation when the process is complete is sufficient.\n[t14] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. A short confirmation when the process is complete is sufficient.\n[t15] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. I would appreciate confirmation of the final outcome.\n[t16] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. Let me know when the request has been completed.\n[t17] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. Please contact me if you need information to verify the request.\n[t18] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. Please let me know once the request has been reviewed.\n[t19] Please erase the account linked to this email address. Please review the account data that is eligible for deletion or de-identification. Please send a confirmation after the process finishes.\n[t20] Please permanently delete the account associated with this email address. Please apply the correct treatment to records covered by the request. I would appreciate confirmation of the final outcome.\n[t21] Please permanently delete the account associated with this email address. Please apply the correct treatment to records covered by the request. Please confirm when the review is complete.\n[t22] Please permanently delete the account associated with this email address. Please apply the request across the systems covered by your deletion policy. I would appreciate confirmation of the final outcome.\n[t23] Please permanently delete the account associated with this email address. Please apply the request across the systems covered by your deletion policy. Please confirm the result after completing the required checks.\n[t24] Please permanently delete the account associated with this email address. Please check the records connected to the account before confirming completion. A short confirmation when the process is complete is sufficient.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t1",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t2",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t3",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t4",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t5",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t6",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t7",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t8",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t9",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t10",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t11",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t12",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t13",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t14",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t15",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t16",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t17",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t18",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t19",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t20",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t21",
+        "k": "deletion"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            },
+            "k": {
+              "enum": [
+                "deletion",
+                "verify_deletion",
+                "access",
+                "export",
+                "correction",
+                "marketing_opt_out",
+                "account_help",
+                "other"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d",
+            "k"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 450,
+    "prompt_tokens": 1203
+  }
+}

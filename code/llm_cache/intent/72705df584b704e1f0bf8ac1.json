@@ -1,0 +1,175 @@
+{
+  "key": "72705df584b704e1f0bf8ac1c9d02ad4686fd73c7faa17a613b929794b5e6da3",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id, d, and k: one of deletion, verify_deletion, access, export, correction, marketing_opt_out, account_help, other.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] Please treat this message as a request for permanent account deletion. Please handle any copies that fall within the scope of the deletion request. Please send a confirmation after the process finishes.\n[t1] Please treat this message as a request for permanent account deletion. Please include information linked through current or earlier account identifiers. A short confirmation when the process is complete is sufficient.\n[t2] Please treat this message as a request for permanent account deletion. Please include information linked through current or earlier account identifiers. Let me know when the request has been completed.\n[t3] Please treat this message as a request for permanent account deletion. Please include information linked through current or earlier account identifiers. Please confirm the result after completing the required checks.\n[t4] Please treat this message as a request for permanent account deletion. Please include information linked through current or earlier account identifiers. Please confirm when the review is complete.\n[t5] Please treat this message as a request for permanent account deletion. Please include records associated with the account under your privacy process. Let me know when the request has been completed.\n[t6] Please treat this message as a request for permanent account deletion. Please include records associated with the account under your privacy process. Please confirm the result after completing the required checks.\n[t7] Please treat this message as a request for permanent account deletion. Please include records associated with the account under your privacy process. Please send a confirmation after the process finishes.\n[t8] Please treat this message as a request for permanent account deletion. Please process this under the standard personal-data deletion procedure. Please confirm the result after completing the required checks.\n[t9] Please treat this message as a request for permanent account deletion. Please review any identifiers connected to this account as part of the request. A short confirmation when the process is complete is sufficient.\n[t10] Please treat this message as a request for permanent account deletion. Please review any identifiers connected to this account as part of the request. Please confirm the result after completing the required checks.\n[t11] Please treat this message as a request for permanent account deletion. Please review any identifiers connected to this account as part of the request. Please confirm when the review is complete.\n[t12] Please treat this message as a request for permanent account deletion. Please review any identifiers connected to this account as part of the request. Please contact me if you need information to verify the request.\n[t13] Please treat this message as a request for permanent account deletion. Please review the account data that is eligible for deletion or de-identification. Let me know when the request has been completed.\n[t14] Please treat this message as a request for permanent account deletion. Please review the account data that is eligible for deletion or de-identification. Please let me know once the request has been reviewed.\n[t15] Please treat this message as a request for permanent account deletion. Please review the account data that is eligible for deletion or de-identification. Please send a confirmation after the process finishes.\n[t16] Solicito a exclusão permanente da conta associada a este e-mail. Verifiquem os identificadores atuais e anteriores conforme o processo de privacidade. Por favor, confirmem o resultado quando a análise terminar.\n[t17] Solicito la eliminación permanente de la cuenta asociada a este correo. Revisen los identificadores actuales y anteriores según su política de privacidad. Por favor, confirmen el resultado cuando termine la revisión.\n[t18] The account itself is gone, but an internal deleted-account record still shows my personal details. Please keep only the reference needed for retained records and remove the rest.\n[t19] The mobile number on my profile is out of date. Please replace it with the new one and leave the account active.\n[t20] The privacy page still says my request failed. Please inspect the actual systems and tell me whether the account and identifiable analytics data have already been removed.\n[t21] このメールアドレスに関連するアカウントの完全な削除を依頼します。 プライバシー手続きに従い、現在および過去の識別情報を確認してください。 確認が完了したら結果をお知らせください。\n[t22] 이 이메일 주소에 연결된 계정의 영구 삭제를 요청합니다. 개인정보 처리 절차에 따라 현재 및 이전 식별자를 검토해 주세요. 검토가 완료되면 결과를 확인해 주세요.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t1",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t2",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t3",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t4",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t5",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t6",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t7",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t8",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t9",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t10",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t11",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t12",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t13",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t14",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t15",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t16",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t17",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t18",
+        "k": "deletion"
+      },
+      {
+        "d": false,
+        "id": "t19",
+        "k": "correction"
+      },
+      {
+        "d": true,
+        "id": "t20",
+        "k": "verify_deletion"
+      },
+      {
+        "d": true,
+        "id": "t21",
+        "k": "deletion"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            },
+            "k": {
+              "enum": [
+                "deletion",
+                "verify_deletion",
+                "access",
+                "export",
+                "correction",
+                "marketing_opt_out",
+                "account_help",
+                "other"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d",
+            "k"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 450,
+    "prompt_tokens": 1171
+  }
+}

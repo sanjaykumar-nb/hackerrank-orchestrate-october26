@@ -1,0 +1,200 @@
+{
+  "key": "5c8191d06c107c7238187e6003ef69aebf892e6d5a26988429b1c2178ce02b16",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot. Compact mode: the full transcription did not fit. For table rows give only resource_id, user_id, email, name and status, with empty references and attributes; give references and attributes only for the record in the detail panel. Keep activity lines short.",
+          "type": "text"
+        },
+        {
+          "sha256": "62436dbba41c564c03f9d34357f8a61162b403b9b8c8cdda86f3b26dfc271264",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "25 Apr backup_9286 restored · Completed",
+      "24 Apr backup_9281 restored · Completed",
+      "22 Apr checksum verification · Completed"
+    ],
+    "application": "Vault Recovery Manager",
+    "page_title": "Customer-platform archives",
+    "records": [
+      {
+        "attributes": [],
+        "email": "bluepeako@outlook.com",
+        "name": null,
+        "phone": null,
+        "references": [],
+        "resource_id": "backup_9291",
+        "status": "Active",
+        "system_hint": "Vault Recovery Manager",
+        "user_id": null
+      },
+      {
+        "attributes": [],
+        "email": "miller.logistics@company.co",
+        "name": null,
+        "phone": null,
+        "references": [],
+        "resource_id": "backup_9288",
+        "status": "Active",
+        "system_hint": "Vault Recovery Manager",
+        "user_id": null
+      },
+      {
+        "attributes": [],
+        "email": "areed1433@gmail.com",
+        "name": null,
+        "phone": null,
+        "references": [],
+        "resource_id": "backup_9287",
+        "status": "Active",
+        "system_hint": "Vault Recovery Manager",
+        "user_id": null
+      },
+      {
+        "attributes": [],
+        "email": "summit-retail@company.co",
+        "name": null,
+        "phone": null,
+        "references": [],
+        "resource_id": "backup_9286",
+        "status": "Active",
+        "system_hint": "Vault Recovery Manager",
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 316,
+    "prompt_tokens": 2170
+  }
+}

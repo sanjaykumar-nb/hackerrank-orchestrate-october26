@@ -1,0 +1,265 @@
+{
+  "key": "a37791dc78bd537c4368ee109bcaba8e53f8b92a133438e06f5e778ccc200135",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "f409cf57eeed0401f86136800c7a2e03807e3fc98124d68153f14bb50ff824cf",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "06:46 Ready for download",
+      "06:45 Package created",
+      "06:43 Collecting customer records",
+      "06:42 Export requested"
+    ],
+    "application": "Customer Download Center",
+    "page_title": "Data exports",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Owner",
+            "value": "ingrid.dahl@outlook.com"
+          },
+          {
+            "key": "Created",
+            "value": "18 Jun 2026 06:42 UTC"
+          },
+          {
+            "key": "Expires",
+            "value": "25 Jun 2026 06:42 UTC"
+          },
+          {
+            "key": "Size",
+            "value": "18.4 MB"
+          },
+          {
+            "key": "Checksum",
+            "value": "SHA-256 · 41ca09..."
+          },
+          {
+            "key": "Download count",
+            "value": "0"
+          },
+          {
+            "key": "Included",
+            "value": "Profile · Orders · Saved addresses"
+          }
+        ],
+        "email": "ingrid.dahl@outlook.com",
+        "name": "export_1260",
+        "phone": null,
+        "references": [
+          "customer_export_1260.zip"
+        ],
+        "resource_id": "export_1260",
+        "status": "Ready",
+        "system_hint": "Customer Download Center / Data exports",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Owner",
+            "value": "sara.kim@northstar.shop"
+          },
+          {
+            "key": "Created",
+            "value": "17 Jun 11:03 UTC"
+          }
+        ],
+        "email": "sara.kim@northstar.shop",
+        "name": "export_1259",
+        "phone": null,
+        "references": [
+          "customer_export_1259.zip"
+        ],
+        "resource_id": "export_1259",
+        "status": "Packaging",
+        "system_hint": "Customer Download Center / Data exports",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Owner",
+            "value": "daniel.park@northstar.shop"
+          },
+          {
+            "key": "Created",
+            "value": "16 Jun 09:27 UTC"
+          }
+        ],
+        "email": "daniel.park@northstar.shop",
+        "name": "export_1258",
+        "phone": null,
+        "references": [
+          "customer_export_1258.zip"
+        ],
+        "resource_id": "export_1258",
+        "status": "Ready",
+        "system_hint": "Customer Download Center / Data exports",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Owner",
+            "value": "marcus.lee@northstar.shop"
+          },
+          {
+            "key": "Created",
+            "value": "20 Jun 14:18 UTC"
+          }
+        ],
+        "email": "marcus.lee@northstar.shop",
+        "name": "export_1261",
+        "phone": null,
+        "references": [
+          "customer_export_1261.zip"
+        ],
+        "resource_id": "export_1261",
+        "status": "Collecting",
+        "system_hint": "Customer Download Center / Data exports",
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 655,
+    "prompt_tokens": 2119
+  }
+}

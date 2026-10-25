@@ -1,0 +1,222 @@
+{
+  "key": "a44d0ede66d143bbd335458282d9458125a48b36afbd339406d23deac4282f63",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "b2e28b364bc50410947b00bd1f0c684006526d349908b2dee3ccbf94b58e29f3",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "06:00:14 email:g.silva76@gmail.com \u0007 2 hits",
+      "05:42:03 customer_reference:user_9842 \u0007 1 hit",
+      "05:31:18 display_name:\"Aditi Jain\" \u0007 1 hit"
+    ],
+    "application": "Northstar Shop",
+    "page_title": "Customer Search",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Display name",
+            "value": "Gabriel Silva"
+          },
+          {
+            "key": "Email",
+            "value": "g.silva76@gmail.com"
+          },
+          {
+            "key": "Customer reference",
+            "value": "user_13"
+          },
+          {
+            "key": "Score",
+            "value": "9.84"
+          },
+          {
+            "key": "Last indexed",
+            "value": "05:58:21 UTC"
+          }
+        ],
+        "email": "g.silva76@gmail.com",
+        "name": "Gabriel Silva",
+        "phone": null,
+        "references": [
+          "user_13"
+        ],
+        "resource_id": "search_428",
+        "status": null,
+        "system_hint": "Customer Search",
+        "user_id": "user_13"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Display name",
+            "value": "\u0007"
+          },
+          {
+            "key": "Email",
+            "value": "g.silva76@gmail.com"
+          },
+          {
+            "key": "Customer reference",
+            "value": "\u0007"
+          },
+          {
+            "key": "Score",
+            "value": "4.12"
+          },
+          {
+            "key": "Last indexed",
+            "value": "05:55:03 UTC"
+          }
+        ],
+        "email": "g.silva76@gmail.com",
+        "name": null,
+        "phone": null,
+        "references": [],
+        "resource_id": "search_1874",
+        "status": null,
+        "system_hint": "Customer Search",
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 416,
+    "prompt_tokens": 2119
+  }
+}

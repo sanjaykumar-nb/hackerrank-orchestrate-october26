@@ -1,0 +1,198 @@
+{
+  "key": "61f5d2265114de1c1a275baf4d825a773479d416a9b429540fd884e2eb99e3b0",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "c782f3fb0bdf40e447ab2a3c8de1d513c6914a187918b6edcce4325b3485d0ac",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "22 May Order confirmed",
+      "23 May Dispatched",
+      "24 May 07:46 Reached regional hub",
+      "24 May 08:15 In transit",
+      "26 May Delivery expected"
+    ],
+    "application": "Helpline Console",
+    "page_title": "CS-5034 · Where is my delivery?",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Customer",
+            "value": "Kofi Ayeyman"
+          },
+          {
+            "key": "Email",
+            "value": "kagyeinan8947@fastmail.com"
+          },
+          {
+            "key": "Assigned",
+            "value": "Maya Chen"
+          },
+          {
+            "key": "Tags",
+            "value": "Delivery · Tracking · Order update"
+          },
+          {
+            "key": "SLA",
+            "value": "01:42"
+          },
+          {
+            "key": "Updated",
+            "value": "moments ago · 4 records"
+          }
+        ],
+        "email": "kagyeinan8947@fastmail.com",
+        "name": "Kofi Ayeyman",
+        "phone": null,
+        "references": [
+          "support_1034",
+          "ORD-20265034",
+          "SWF-884103"
+        ],
+        "resource_id": "CS-5034",
+        "status": "Normal priority",
+        "system_hint": "Helpline Console",
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 291,
+    "prompt_tokens": 2119
+  }
+}

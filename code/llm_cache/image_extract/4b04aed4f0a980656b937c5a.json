@@ -1,0 +1,214 @@
+{
+  "key": "4b04aed4f0a980656b937c5a94d769e33cb738b979e70a036d437a9e12849c72",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "52b54aa4c4fbc24e946782170f27ded745244d4508b2eb0b5e3883d61c36a46b",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "Autumn offers 32.4% open rate",
+      "Home & Lifestyle Picks 28.7% open rate",
+      "Profile refreshed from live data Recorded"
+    ],
+    "application": "Northstar Shop",
+    "page_title": "Audience Operations",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Market",
+            "value": "South Korea"
+          },
+          {
+            "key": "Language",
+            "value": "Korean"
+          },
+          {
+            "key": "Email opt-in",
+            "value": "Yes"
+          },
+          {
+            "key": "SMS opt-in",
+            "value": "No"
+          },
+          {
+            "key": "Last refreshed",
+            "value": "15 Sep 2026 23:40 UTC"
+          },
+          {
+            "key": "Audience",
+            "value": "Returning customers \u0014 East Asia"
+          },
+          {
+            "key": "Segments",
+            "value": "Repeat customer \u0014 Home & lifestyle \u0014 Mobile shopper"
+          },
+          {
+            "key": "Preferred categories",
+            "value": "Desk accessories \u0014 Drinkware"
+          },
+          {
+            "key": "Last campaign",
+            "value": "Autumn offers"
+          },
+          {
+            "key": "Open rate",
+            "value": "32.4%"
+          },
+          {
+            "key": "Click rate",
+            "value": "6.8%"
+          }
+        ],
+        "email": "sj.park@naver.com",
+        "name": "Soo-jin Park",
+        "phone": "+82-10-5837-9451",
+        "references": [
+          "marketing_001"
+        ],
+        "resource_id": "marketing_001",
+        "status": "Live",
+        "system_hint": "Northstar Shop \u0014 Audience Operations",
+        "user_id": "marketing_001"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 364,
+    "prompt_tokens": 2119
+  }
+}

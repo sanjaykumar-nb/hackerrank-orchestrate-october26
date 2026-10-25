@@ -1,0 +1,196 @@
+{
+  "key": "a8be5cec60f087704cefb5b2aad19a8a8e7c8451d4c7b8f2c0ffa941de1c2662",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "6c381d23b783f6f5988f7e6740ffa1b05b7b18e22ff51009a8ea84a79955fd1e",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "Reference created",
+      "Recorded",
+      "Order link added",
+      "ORD-20263245",
+      "Support links added",
+      "CS-3245, CS-3378",
+      "Finance link added",
+      "FIN-7742",
+      "Metadata reviewed",
+      "Recorded"
+    ],
+    "application": "Customer Reference Registry",
+    "page_title": "Customer Reference Registry",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Reference type",
+            "value": "Customer key"
+          },
+          {
+            "key": "Created",
+            "value": "11 Jan 2024 08:42 UTC"
+          },
+          {
+            "key": "Most recent update",
+            "value": "10 Mar 2026 07:18 UTC"
+          },
+          {
+            "key": "Owner team",
+            "value": "Account Platform"
+          }
+        ],
+        "email": null,
+        "name": "user_17",
+        "phone": null,
+        "references": [
+          "ORD-20263245",
+          "CS-3245",
+          "CS-3378",
+          "FIN-7742"
+        ],
+        "resource_id": null,
+        "status": "Retained reference",
+        "system_hint": "Customer Reference Registry",
+        "user_id": "user_17"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 269,
+    "prompt_tokens": 2119
+  }
+}

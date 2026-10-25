@@ -1,0 +1,273 @@
+{
+  "key": "a08e0882586e5a8129aaf3f8a995d01f57b6efc3712c6eccffb71f5af0aebb2c",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "2f4b3872da323c8b894bdfba85ce80fdbd67df05c131eb889e28779fa6c18a31",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "24 Sep Customer replied to CS-8538",
+      "22 Sep Support agent responded",
+      "18 Sep Order ORD-20265762 delivered",
+      "03 Sep Order ORD-20265518 returned",
+      "28 Aug support_9538 created"
+    ],
+    "application": "Customer Operations",
+    "page_title": "Customer Operations",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Email",
+            "value": "haruka.s1838@zoho.com"
+          },
+          {
+            "key": "Phone",
+            "value": "+81 90 7610 2507"
+          },
+          {
+            "key": "Signup channel",
+            "value": "mobile_app"
+          },
+          {
+            "key": "Market",
+            "value": "JP"
+          },
+          {
+            "key": "Preferred language",
+            "value": "Japanese"
+          },
+          {
+            "key": "Last contact",
+            "value": "24 Sep 2026 09:14 JST"
+          },
+          {
+            "key": "Default address",
+            "value": "2-18-4 Kichijoji, Musashino, Tokyo 180-0004"
+          },
+          {
+            "key": "Loyalty tier",
+            "value": "Silver"
+          },
+          {
+            "key": "Support",
+            "value": "CS-8538 - support_9538"
+          },
+          {
+            "key": "Member since",
+            "value": "12 Jan 2024"
+          }
+        ],
+        "email": "haruka.s1838@zoho.com",
+        "name": "Haruka Sato",
+        "phone": "+81 90 7610 2507",
+        "references": [
+          "CS-8538",
+          "support_9538"
+        ],
+        "resource_id": "user_11 - account_5762",
+        "status": "Silver",
+        "system_hint": "Northstar Shop / Customer Operations / Customers",
+        "user_id": "user_11"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Date",
+            "value": "12 Sep 2026"
+          },
+          {
+            "key": "Item",
+            "value": "Ceramic coffee set"
+          },
+          {
+            "key": "Qty",
+            "value": "1"
+          },
+          {
+            "key": "Total",
+            "value": "JPY 8,900"
+          }
+        ],
+        "email": "haruka.s1838@zoho.com",
+        "name": "Haruka Sato",
+        "phone": "+81 90 7610 2507",
+        "references": [
+          "ORD-20265762"
+        ],
+        "resource_id": "ORD-20265762",
+        "status": "Delivered - 18 Sep",
+        "system_hint": "Northstar Shop / Customer Operations / Customers",
+        "user_id": "user_11"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Date",
+            "value": "28 Aug 2026"
+          },
+          {
+            "key": "Item",
+            "value": "Travel backpack"
+          },
+          {
+            "key": "Qty",
+            "value": "1"
+          },
+          {
+            "key": "Total",
+            "value": "JPY 12,400"
+          }
+        ],
+        "email": "haruka.s1838@zoho.com",
+        "name": "Haruka Sato",
+        "phone": "+81 90 7610 2507",
+        "references": [
+          "ORD-20265518"
+        ],
+        "resource_id": "ORD-20265518",
+        "status": "Returned - 03 Sep",
+        "system_hint": "Northstar Shop / Customer Operations / Customers",
+        "user_id": "user_11"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 778,
+    "prompt_tokens": 2119
+  }
+}

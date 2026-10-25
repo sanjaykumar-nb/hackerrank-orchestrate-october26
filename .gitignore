@@ -1,0 +1,10 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.cache/
+code.zip
+agent-trace/
+agent-trace.zip

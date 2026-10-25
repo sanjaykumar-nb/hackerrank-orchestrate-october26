@@ -1,0 +1,175 @@
+{
+  "key": "6071c047dbfe6e5335053347538b06e774e072119508da06e99953836ed3f16b",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id, d, and k: one of deletion, verify_deletion, access, export, correction, marketing_opt_out, account_help, other.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] Please process a permanent account-deletion request for this email address. Please review the account data that is eligible for deletion or de-identification. Please contact me if you need information to verify the request.\n[t1] Please process a permanent account-deletion request for this email address. Please review the account data that is eligible for deletion or de-identification. Please send a confirmation after the process finishes.\n[t2] Please remove me from marketing lists only. I still want receipts and service messages for this account.\n[t3] Please remove my profile and clean my personal details out of earlier support conversations. Some of those messages also relate to another customer, so the conversation itself may need to stay.\n[t4] Please stop the promotional emails. I still need the account and my order history, so I am not asking for deletion.\n[t5] Please treat this message as a request for permanent account deletion. Please apply the correct treatment to records covered by the request. Let me know when the request has been completed.\n[t6] Please treat this message as a request for permanent account deletion. Please apply the correct treatment to records covered by the request. Please confirm the result after completing the required checks.\n[t7] Please treat this message as a request for permanent account deletion. Please apply the correct treatment to records covered by the request. Please contact me if you need information to verify the request.\n[t8] Please treat this message as a request for permanent account deletion. Please apply the request across the systems covered by your deletion policy. I would appreciate confirmation of the final outcome.\n[t9] Please treat this message as a request for permanent account deletion. Please apply the request across the systems covered by your deletion policy. Let me know when the request has been completed.\n[t10] Please treat this message as a request for permanent account deletion. Please apply the request across the systems covered by your deletion policy. Please let me know once the request has been reviewed.\n[t11] Please treat this message as a request for permanent account deletion. Please apply the request across the systems covered by your deletion policy. Please send a confirmation after the process finishes.\n[t12] Please treat this message as a request for permanent account deletion. Please check the records connected to the account before confirming completion. I would appreciate confirmation of the final outcome.\n[t13] Please treat this message as a request for permanent account deletion. Please check the records connected to the account before confirming completion. Let me know when the request has been completed.\n[t14] Please treat this message as a request for permanent account deletion. Please check the records connected to the account before confirming completion. Please contact me if you need information to verify the request.\n[t15] Please treat this message as a request for permanent account deletion. Please check the records connected to the account before confirming completion. Please let me know once the request has been reviewed.\n[t16] Please treat this message as a request for permanent account deletion. Please check the records connected to the account before confirming completion. Please send a confirmation after the process finishes.\n[t17] Please treat this message as a request for permanent account deletion. Please complete the normal identity and data review for this request. Please contact me if you need information to verify the request.\n[t18] Please treat this message as a request for permanent account deletion. Please ensure the request is applied to the relevant account records. Let me know when the request has been completed.\n[t19] Please treat this message as a request for permanent account deletion. Please ensure the request is applied to the relevant account records. Please confirm the result after completing the required checks.\n[t20] Please treat this message as a request for permanent account deletion. Please ensure the request is applied to the relevant account records. Please confirm when the review is complete.\n[t21] Please treat this message as a request for permanent account deletion. Please ensure the request is applied to the relevant account records. Please contact me if you need information to verify the request.\n[t22] Please treat this message as a request for permanent account deletion. Please follow the applicable retention and deletion requirements for the account. A short confirmation when the process is complete is sufficient.\n[t23] Please treat this message as a request for permanent account deletion. Please handle any copies that fall within the scope of the deletion request. A short confirmation when the process is complete is sufficient.\n[t24] Please treat this message as a request for permanent account deletion. Please handle any copies that fall within the scope of the deletion request. Let me know when the request has been completed.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t1",
+        "k": "deletion"
+      },
+      {
+        "d": false,
+        "id": "t2",
+        "k": "marketing_opt_out"
+      },
+      {
+        "d": true,
+        "id": "t3",
+        "k": "deletion"
+      },
+      {
+        "d": false,
+        "id": "t4",
+        "k": "marketing_opt_out"
+      },
+      {
+        "d": true,
+        "id": "t5",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t6",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t7",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t8",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t9",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t10",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t11",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t12",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t13",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t14",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t15",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t16",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t17",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t18",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t19",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t20",
+        "k": "deletion"
+      },
+      {
+        "d": true,
+        "id": "t21",
+        "k": "deletion"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            },
+            "k": {
+              "enum": [
+                "deletion",
+                "verify_deletion",
+                "access",
+                "export",
+                "correction",
+                "marketing_opt_out",
+                "account_help",
+                "other"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d",
+            "k"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 450,
+    "prompt_tokens": 1225
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "key": "73604359179382cd560046090df261b1bd907f45f479d256082e00efec92056e",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id and d.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] Please treat this message as a request for permanent account deletion. Please review the account data that is eligible for deletion or de-identification. Please send a confirmation after the process finishes.\n[t1] Solicito a exclusão permanente da conta associada a este e-mail. Verifiquem os identificadores atuais e anteriores conforme o processo de privacidade. Por favor, confirmem o resultado quando a análise terminar.\n[t2] Solicito la eliminación permanente de la cuenta asociada a este correo. Revisen los identificadores actuales y anteriores según su política de privacidad. Por favor, confirmen el resultado cuando termine la revisión.\n[t3] The account itself is gone, but an internal deleted-account record still shows my personal details. Please keep only the reference needed for retained records and remove the rest.\n[t4] The mobile number on my profile is out of date. Please replace it with the new one and leave the account active.\n[t5] The privacy page still says my request failed. Please inspect the actual systems and tell me whether the account and identifiable analytics data have already been removed.\n[t6] このメールアドレスに関連するアカウントの完全な削除を依頼します。 プライバシー手続きに従い、現在および過去の識別情報を確認してください。 確認が完了したら結果をお知らせください。\n[t7] 이 이메일 주소에 연결된 계정의 영구 삭제를 요청합니다. 개인정보 처리 절차에 따라 현재 및 이전 식별자를 검토해 주세요. 검토가 완료되면 결과를 확인해 주세요.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0"
+      },
+      {
+        "d": true,
+        "id": "t1"
+      },
+      {
+        "d": true,
+        "id": "t2"
+      },
+      {
+        "d": true,
+        "id": "t3"
+      },
+      {
+        "d": false,
+        "id": "t4"
+      },
+      {
+        "d": true,
+        "id": "t5"
+      },
+      {
+        "d": true,
+        "id": "t6"
+      },
+      {
+        "d": true,
+        "id": "t7"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 102,
+    "prompt_tokens": 552
+  }
+}

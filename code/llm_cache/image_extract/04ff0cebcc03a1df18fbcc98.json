@@ -1,0 +1,395 @@
+{
+  "key": "04ff0cebcc03a1df18fbcc98fa1cd3527e00605401a06e1fd4a7ae5889ec5b24",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "85074107e8ca1c4a4bc05711a8c9efb4d63aa8f58aabaa2a1e5f4d7a46726345",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "v3",
+      "12 Feb 18:42 \u000b metadata update",
+      "v2",
+      "12 Feb 18:39 \u000b upload complete",
+      "v1",
+      "12 Feb 18:38 \u000b object created"
+    ],
+    "application": "Nimbus Object Storage",
+    "page_title": "northstar-customer-data",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "684 KB"
+          },
+          {
+            "key": "Version",
+            "value": "v3"
+          },
+          {
+            "key": "Content type",
+            "value": "application/pdf"
+          },
+          {
+            "key": "Encryption",
+            "value": "AES-256"
+          },
+          {
+            "key": "Checksum",
+            "value": "e71b6d..."
+          },
+          {
+            "key": "Uploader",
+            "value": "support-service"
+          },
+          {
+            "key": "Modified",
+            "value": "12 Feb 2026 18:42 UTC"
+          }
+        ],
+        "email": null,
+        "name": "delivery_confirmation_19.pdf",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "712 KB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "11 Feb 14:17"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "delivery_confirmation_20.pdf",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "203 KB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "10 Feb 09:33"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "return_label_4821.pdf",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "198 KB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "11 Feb 16:05"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v2"
+          }
+        ],
+        "email": null,
+        "name": "return_label_4876.pdf",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "318 KB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "10 Feb 11:21"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "invoice_NS-10493.pdf",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "2.4 MB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "12 Feb 10:08"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "parcel_damage_7713.jpg",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "128 MB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "10 Feb 23:14"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "customer_export_2026-02-10.zip",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Size",
+            "value": "131 MB"
+          },
+          {
+            "key": "Modified (UTC)",
+            "value": "12 Feb 21:56"
+          },
+          {
+            "key": "Storage class",
+            "value": "Standard"
+          },
+          {
+            "key": "Version",
+            "value": "v1"
+          }
+        ],
+        "email": null,
+        "name": "customer_export_2026-02-12.zip",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": null,
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 1095,
+    "prompt_tokens": 2119
+  }
+}

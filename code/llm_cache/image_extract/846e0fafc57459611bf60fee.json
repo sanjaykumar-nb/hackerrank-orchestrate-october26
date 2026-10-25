@@ -1,0 +1,297 @@
+{
+  "key": "846e0fafc57459611bf60fee48c5f6f0078788e382f6a8576476a4e9b0b617e4",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "5d43f9c554700f7248fc05cf41e2c01ea732a5870def8e24dbfbfc42a7b055b4",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "07:59:42 124 events delivered",
+      "07:58:10 checkpoint committed",
+      "07:56:44 18 events retried",
+      "07:55:02 destination acknowledged batch"
+    ],
+    "application": "BridgeOps",
+    "page_title": "Connections",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Destination",
+            "value": "customer_analytics_warehouse"
+          },
+          {
+            "key": "Selector",
+            "value": "jain.aditi@gmail.com"
+          },
+          {
+            "key": "Mode",
+            "value": "Continuous"
+          },
+          {
+            "key": "Events/hour",
+            "value": "1,284"
+          },
+          {
+            "key": "Last contact",
+            "value": "07:59:42"
+          },
+          {
+            "key": "Owner",
+            "value": "Data Platform"
+          },
+          {
+            "key": "Sync mode",
+            "value": "Continuous sync"
+          },
+          {
+            "key": "Last response",
+            "value": "200 OK · 1.8 s"
+          }
+        ],
+        "email": "jain.aditi@gmail.com",
+        "name": "data_flow_1121",
+        "phone": null,
+        "references": [],
+        "resource_id": "data_flow_1121",
+        "status": "Healthy",
+        "system_hint": "BridgeOps Connections",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Destination",
+            "value": "customer_analytics_warehouse"
+          },
+          {
+            "key": "Selector",
+            "value": "lucia-torres@gmail.com"
+          },
+          {
+            "key": "Mode",
+            "value": "Continuous"
+          },
+          {
+            "key": "Events/hour",
+            "value": "842"
+          },
+          {
+            "key": "Last contact",
+            "value": "07:59:36"
+          }
+        ],
+        "email": "lucia-torres@gmail.com",
+        "name": "data_flow_9846",
+        "phone": null,
+        "references": [],
+        "resource_id": "data_flow_9846",
+        "status": null,
+        "system_hint": "BridgeOps Connections",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Destination",
+            "value": "notification_service"
+          },
+          {
+            "key": "Selector",
+            "value": "order events"
+          },
+          {
+            "key": "Mode",
+            "value": "Continuous"
+          },
+          {
+            "key": "Events/hour",
+            "value": "650"
+          },
+          {
+            "key": "Last contact",
+            "value": "07:59:28"
+          }
+        ],
+        "email": null,
+        "name": "Order notifications",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": "BridgeOps Connections",
+        "user_id": null
+      },
+      {
+        "attributes": [
+          {
+            "key": "Destination",
+            "value": "logistics_warehouse"
+          },
+          {
+            "key": "Selector",
+            "value": "shipment events"
+          },
+          {
+            "key": "Mode",
+            "value": "Continuous"
+          },
+          {
+            "key": "Events/hour",
+            "value": "420"
+          },
+          {
+            "key": "Last contact",
+            "value": "07:59:13"
+          }
+        ],
+        "email": null,
+        "name": "Delivery tracking",
+        "phone": null,
+        "references": [],
+        "resource_id": null,
+        "status": null,
+        "system_hint": "BridgeOps Connections",
+        "user_id": null
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 686,
+    "prompt_tokens": 2119
+  }
+}

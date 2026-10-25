@@ -1,0 +1,341 @@
+{
+  "key": "a25f5741cbf525f39d73a155656ac9a634133cf8c0b08007cf82cacd5752170a",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "image_extract",
+  "request": [
+    {
+      "content": "You transcribe screenshots of internal business applications into structured JSON for a data-deletion audit.\n\nRules:\n- Transcribe only what is visibly on screen. Never infer, complete or invent values.\n- Copy identifiers exactly as shown, character for character: resource ids (for example `account_5762`, `backup_9287`, `support_9538`), user ids (`user_11`), emails, phone numbers, ticket/order/statement references.\n- Emit one entry in `records` for every distinct record shown: each table row, and the detail panel of the selected record. If a detail panel repeats a table row, merge them into one entry.\n- `resource_id`: the system resource id of the record if shown, otherwise null.\n- `system_hint`: the product or service the screen belongs to, in a few words, as shown.\n- `status`: the record's status text exactly as shown (for example \"Active\", \"Restore allowed\", \"Anonymized\"), otherwise null.\n- `references`: other identifiers attached to the record (order ids, ticket ids, archive ids, file names).\n- `attributes`: every other labelled field of the record as key/value pairs (for example Region, Created, Retention end, Path, Destination).\n- `activity`: each line of any activity/timeline panel, verbatim.\n- Use null for anything not visible. Output JSON only.\n",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Transcribe this screenshot.",
+          "type": "text"
+        },
+        {
+          "sha256": "24c026bc82ddc34eb41a302f7c4ba37c0df85d6c1425647f57d2ec7a59932b6b",
+          "type": "image_url"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "response": {
+    "activity": [
+      "25 Aug Account closure recorded",
+      "25 Aug Session revoked",
+      "24 Aug Recovery challenge completed",
+      "22 Aug Email change confirmed"
+    ],
+    "application": "Sentinel",
+    "page_title": "Account events",
+    "records": [
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Account lifecycle"
+          },
+          {
+            "key": "Actor",
+            "value": "Automated workflow"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          },
+          {
+            "key": "event_type",
+            "value": "account_closure_recorded"
+          },
+          {
+            "key": "subject",
+            "value": "user_03"
+          },
+          {
+            "key": "actor",
+            "value": "automated account workflow"
+          },
+          {
+            "key": "recorded_at",
+            "value": "2026-08-25T04:03:00Z"
+          },
+          {
+            "key": "fingerprint",
+            "value": "8f0c...31ad"
+          },
+          {
+            "key": "signature",
+            "value": "Valid"
+          },
+          {
+            "key": "journal",
+            "value": "2026-Q3"
+          }
+        ],
+        "email": null,
+        "name": "Account closure recorded",
+        "phone": null,
+        "references": [
+          "audit_record_003"
+        ],
+        "resource_id": "audit_record_003",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Session management"
+          },
+          {
+            "key": "Actor",
+            "value": "Security system"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          }
+        ],
+        "email": null,
+        "name": "Session revoked",
+        "phone": null,
+        "references": [
+          "audit_record_002"
+        ],
+        "resource_id": "audit_record_002",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Authentication"
+          },
+          {
+            "key": "Actor",
+            "value": "User (self)"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          }
+        ],
+        "email": null,
+        "name": "Recovery challenge completed",
+        "phone": null,
+        "references": [
+          "audit_record_001"
+        ],
+        "resource_id": "audit_record_001",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Profile update"
+          },
+          {
+            "key": "Actor",
+            "value": "User (self)"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          }
+        ],
+        "email": null,
+        "name": "Email change confirmed",
+        "phone": null,
+        "references": [
+          "audit_record_006"
+        ],
+        "resource_id": "audit_record_006",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Authentication"
+          },
+          {
+            "key": "Actor",
+            "value": "User (self)"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          }
+        ],
+        "email": null,
+        "name": "Login from new device",
+        "phone": null,
+        "references": [
+          "audit_record_005"
+        ],
+        "resource_id": "audit_record_005",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      },
+      {
+        "attributes": [
+          {
+            "key": "Category",
+            "value": "Authentication"
+          },
+          {
+            "key": "Actor",
+            "value": "User (self)"
+          },
+          {
+            "key": "Integrity",
+            "value": "Valid"
+          }
+        ],
+        "email": null,
+        "name": "Password changed",
+        "phone": null,
+        "references": [
+          "audit_record_004"
+        ],
+        "resource_id": "audit_record_004",
+        "status": null,
+        "system_hint": "Northstar Shop / Sentinel / Account events",
+        "user_id": "user_03"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "activity": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "application": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "page_title": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "records": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "references": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "system_hint": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "user_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "resource_id",
+            "system_hint",
+            "user_id",
+            "email",
+            "phone",
+            "name",
+            "status",
+            "references",
+            "attributes"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "application",
+      "page_title",
+      "records",
+      "activity"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 867,
+    "prompt_tokens": 2119
+  }
+}

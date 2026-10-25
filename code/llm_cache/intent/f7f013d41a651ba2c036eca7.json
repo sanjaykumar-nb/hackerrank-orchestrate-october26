@@ -1,0 +1,163 @@
+{
+  "key": "f7f013d41a651ba2c036eca709fadc1e13dbe167e9b8e2e841d788af6aa65300",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id and d.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] Please audit the deletion as it stood when my request was reviewed. I want confirmation that the account was fully removed at that point.\n[t1] Please begin the deletion process for the account using this email address. Please apply the correct treatment to records covered by the request. Let me know when the request has been completed.\n[t2] Please begin the deletion process for the account using this email address. Please apply the request across the systems covered by your deletion policy. A short confirmation when the process is complete is sufficient.\n[t3] Please begin the deletion process for the account using this email address. Please check the records connected to the account before confirming completion. Please confirm the result after completing the required checks.\n[t4] Please begin the deletion process for the account using this email address. Please check the records connected to the account before confirming completion. Please confirm when the review is complete.\n[t5] Please begin the deletion process for the account using this email address. Please check the records connected to the account before confirming completion. Please contact me if you need information to verify the request.\n[t6] Please begin the deletion process for the account using this email address. Please check the records connected to the account before confirming completion. Please let me know once the request has been reviewed.\n[t7] Please begin the deletion process for the account using this email address. Please complete the normal identity and data review for this request. Please let me know once the request has been reviewed.\n[t8] Please begin the deletion process for the account using this email address. Please ensure the request is applied to the relevant account records. A short confirmation when the process is complete is sufficient.\n[t9] Please begin the deletion process for the account using this email address. Please ensure the request is applied to the relevant account records. Please let me know once the request has been reviewed.\n[t10] Please begin the deletion process for the account using this email address. Please follow the applicable retention and deletion requirements for the account. A short confirmation when the process is complete is sufficient.\n[t11] Please begin the deletion process for the account using this email address. Please follow the applicable retention and deletion requirements for the account. Please let me know once the request has been reviewed.\n[t12] Please begin the deletion process for the account using this email address. Please handle any copies that fall within the scope of the deletion request. I would appreciate confirmation of the final outcome.\n[t13] Please begin the deletion process for the account using this email address. Please handle any copies that fall within the scope of the deletion request. Let me know when the request has been completed.\n[t14] Please begin the deletion process for the account using this email address. Please handle any copies that fall within the scope of the deletion request. Please confirm the result after completing the required checks.\n[t15] Please begin the deletion process for the account using this email address. Please include information linked through current or earlier account identifiers. A short confirmation when the process is complete is sufficient.\n[t16] Please begin the deletion process for the account using this email address. Please include information linked through current or earlier account identifiers. Please send a confirmation after the process finishes.\n[t17] Please begin the deletion process for the account using this email address. Please include records associated with the account under your privacy process. Please confirm when the review is complete.\n[t18] Please begin the deletion process for the account using this email address. Please review any identifiers connected to this account as part of the request. A short confirmation when the process is complete is sufficient.\n[t19] Please begin the deletion process for the account using this email address. Please review any identifiers connected to this account as part of the request. Please confirm when the review is complete.\n[t20] Please begin the deletion process for the account using this email address. Please review any identifiers connected to this account as part of the request. Please send a confirmation after the process finishes.\n[t21] Please begin the deletion process for the account using this email address. Please review the account data that is eligible for deletion or de-identification. A short confirmation when the process is complete is sufficient.\n[t22] Please begin the deletion process for the account using this email address. Please review the account data that is eligible for deletion or de-identification. Let me know when the request has been completed.\n[t23] Please change the email address used for this account. I want to continue using the service.\n[t24] Please close my account and process the associated personal-data deletion. Please apply the correct treatment to records covered by the request. A short confirmation when the process is complete is sufficient.\n[t25] Please close my account and process the associated personal-data deletion. Please apply the correct treatment to records covered by the request. Please send a confirmation after the process finishes.\n[t26] Please close my account and process the associated personal-data deletion. Please apply the request across the systems covered by your deletion policy. Please contact me if you need information to verify the request.\n[t27] Please close my account and process the associated personal-data deletion. Please apply the request across the systems covered by your deletion policy. Please let me know once the request has been reviewed.\n[t28] Please close my account and process the associated personal-data deletion. Please check the records connected to the account before confirming completion. I would appreciate confirmation of the final outcome.\n[t29] Please close my account and process the associated personal-data deletion. Please check the records connected to the account before confirming completion. Please contact me if you need information to verify the request.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0"
+      },
+      {
+        "d": true,
+        "id": "t1"
+      },
+      {
+        "d": true,
+        "id": "t2"
+      },
+      {
+        "d": true,
+        "id": "t3"
+      },
+      {
+        "d": true,
+        "id": "t4"
+      },
+      {
+        "d": true,
+        "id": "t5"
+      },
+      {
+        "d": true,
+        "id": "t6"
+      },
+      {
+        "d": true,
+        "id": "t7"
+      },
+      {
+        "d": true,
+        "id": "t8"
+      },
+      {
+        "d": true,
+        "id": "t9"
+      },
+      {
+        "d": true,
+        "id": "t10"
+      },
+      {
+        "d": true,
+        "id": "t11"
+      },
+      {
+        "d": true,
+        "id": "t12"
+      },
+      {
+        "d": true,
+        "id": "t13"
+      },
+      {
+        "d": true,
+        "id": "t14"
+      },
+      {
+        "d": true,
+        "id": "t15"
+      },
+      {
+        "d": true,
+        "id": "t16"
+      },
+      {
+        "d": true,
+        "id": "t17"
+      },
+      {
+        "d": true,
+        "id": "t18"
+      },
+      {
+        "d": true,
+        "id": "t19"
+      },
+      {
+        "d": true,
+        "id": "t20"
+      },
+      {
+        "d": true,
+        "id": "t21"
+      },
+      {
+        "d": true,
+        "id": "t22"
+      },
+      {
+        "d": false,
+        "id": "t23"
+      },
+      {
+        "d": true,
+        "id": "t24"
+      },
+      {
+        "d": true,
+        "id": "t25"
+      },
+      {
+        "d": true,
+        "id": "t26"
+      },
+      {
+        "d": true,
+        "id": "t27"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 360,
+    "prompt_tokens": 1420
+  }
+}

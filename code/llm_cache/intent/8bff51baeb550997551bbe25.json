@@ -1,0 +1,163 @@
+{
+  "key": "8bff51baeb550997551bbe2585ac1f236b4ddf6a3a8f4916ae6e895f0237a914",
+  "model": "qwen/qwen3.8-27b",
+  "purpose": "intent",
+  "request": [
+    {
+      "content": "You classify customer privacy requests for a deletion audit. Requests may be in any language.\n\nFor each request decide whether it AUTHORIZES DELETION of the customer's account or personal data.\n\nAuthorizes deletion (d=true):\n- asks to delete, erase, remove, close permanently, or anonymize the account or its personal data;\n- complains that a deletion was not finished and asks to finish it or to check that data is gone;\n- asks to verify that a deletion already happened, or to remove remaining copies.\n\nDoes not authorize deletion (d=false):\n- access or copy of data, export or download, invoices or receipts;\n- correction or update of details (name, email, phone);\n- marketing or promotional opt-out only, or unsubscribe only;\n- login, password or account-access help;\n- any request that explicitly says not to delete, close or remove the account or records.\nA request that mentions deletion only to rule it out is d=false.\n\nReturn one item per request with its id and d.\n",
+      "role": "system"
+    },
+    {
+      "content": "Requests:\n[t0] I want to close this account and have its associated personal data deleted. Please ensure the request is applied to the relevant account records. I would appreciate confirmation of the final outcome.\n[t1] I want to close this account and have its associated personal data deleted. Please ensure the request is applied to the relevant account records. Please let me know once the request has been reviewed.\n[t2] I want to close this account and have its associated personal data deleted. Please follow the applicable retention and deletion requirements for the account. Please contact me if you need information to verify the request.\n[t3] I want to close this account and have its associated personal data deleted. Please handle any copies that fall within the scope of the deletion request. Please confirm when the review is complete.\n[t4] I want to close this account and have its associated personal data deleted. Please include information linked through current or earlier account identifiers. I would appreciate confirmation of the final outcome.\n[t5] I want to close this account and have its associated personal data deleted. Please include information linked through current or earlier account identifiers. Please let me know once the request has been reviewed.\n[t6] I want to close this account and have its associated personal data deleted. Please include records associated with the account under your privacy process. Please confirm when the review is complete.\n[t7] I want to close this account and have its associated personal data deleted. Please include records associated with the account under your privacy process. Please send a confirmation after the process finishes.\n[t8] I want to close this account and have its associated personal data deleted. Please process this under the standard personal-data deletion procedure. A short confirmation when the process is complete is sufficient.\n[t9] I want to close this account and have its associated personal data deleted. Please process this under the standard personal-data deletion procedure. I would appreciate confirmation of the final outcome.\n[t10] I want to close this account and have its associated personal data deleted. Please process this under the standard personal-data deletion procedure. Please confirm when the review is complete.\n[t11] I want to close this account and have its associated personal data deleted. Please process this under the standard personal-data deletion procedure. Please let me know once the request has been reviewed.\n[t12] I want to close this account and have its associated personal data deleted. Please review any identifiers connected to this account as part of the request. Please contact me if you need information to verify the request.\n[t13] I want to close this account and have its associated personal data deleted. Please review any identifiers connected to this account as part of the request. Please send a confirmation after the process finishes.\n[t14] I want to close this account permanently. You may retain backups if required, but they must not be able to restore my personal profile.\n[t15] I was told that deletion was complete, but the account and its search result can still be found. Please investigate and finish the deletion.\n[t16] I was told the account had been deleted, but I can still find traces in search, support, and analytics. Please handle them and disable any synchronization that could recreate them.\n[t17] I would like the account associated with this address to be erased. Please apply the correct treatment to records covered by the request. Please confirm the result after completing the required checks.\n[t18] I would like the account associated with this address to be erased. Please apply the correct treatment to records covered by the request. Please send a confirmation after the process finishes.\n[t19] I would like the account associated with this address to be erased. Please apply the request across the systems covered by your deletion policy. I would appreciate confirmation of the final outcome.\n[t20] I would like the account associated with this address to be erased. Please apply the request across the systems covered by your deletion policy. Let me know when the request has been completed.\n[t21] I would like the account associated with this address to be erased. Please apply the request across the systems covered by your deletion policy. Please confirm the result after completing the required checks.\n[t22] I would like the account associated with this address to be erased. Please check the records connected to the account before confirming completion. Please confirm the result after completing the required checks.\n[t23] I would like the account associated with this address to be erased. Please complete the normal identity and data review for this request. Let me know when the request has been completed.\n[t24] I would like the account associated with this address to be erased. Please complete the normal identity and data review for this request. Please contact me if you need information to verify the request.\n[t25] I would like the account associated with this address to be erased. Please ensure the request is applied to the relevant account records. A short confirmation when the process is complete is sufficient.\n[t26] I would like the account associated with this address to be erased. Please ensure the request is applied to the relevant account records. Please let me know once the request has been reviewed.\n[t27] I would like the account associated with this address to be erased. Please follow the applicable retention and deletion requirements for the account. Please send a confirmation after the process finishes.\n[t28] I would like the account associated with this address to be erased. Please handle any copies that fall within the scope of the deletion request. Please confirm the result after completing the required checks.\n[t29] I would like the account associated with this address to be erased. Please handle any copies that fall within the scope of the deletion request. Please confirm when the review is complete.",
+      "role": "user"
+    }
+  ],
+  "response": {
+    "items": [
+      {
+        "d": true,
+        "id": "t0"
+      },
+      {
+        "d": true,
+        "id": "t1"
+      },
+      {
+        "d": true,
+        "id": "t2"
+      },
+      {
+        "d": true,
+        "id": "t3"
+      },
+      {
+        "d": true,
+        "id": "t4"
+      },
+      {
+        "d": true,
+        "id": "t5"
+      },
+      {
+        "d": true,
+        "id": "t6"
+      },
+      {
+        "d": true,
+        "id": "t7"
+      },
+      {
+        "d": true,
+        "id": "t8"
+      },
+      {
+        "d": true,
+        "id": "t9"
+      },
+      {
+        "d": true,
+        "id": "t10"
+      },
+      {
+        "d": true,
+        "id": "t11"
+      },
+      {
+        "d": true,
+        "id": "t12"
+      },
+      {
+        "d": true,
+        "id": "t13"
+      },
+      {
+        "d": true,
+        "id": "t14"
+      },
+      {
+        "d": true,
+        "id": "t15"
+      },
+      {
+        "d": true,
+        "id": "t16"
+      },
+      {
+        "d": true,
+        "id": "t17"
+      },
+      {
+        "d": true,
+        "id": "t18"
+      },
+      {
+        "d": true,
+        "id": "t19"
+      },
+      {
+        "d": true,
+        "id": "t20"
+      },
+      {
+        "d": true,
+        "id": "t21"
+      },
+      {
+        "d": true,
+        "id": "t22"
+      },
+      {
+        "d": true,
+        "id": "t23"
+      },
+      {
+        "d": true,
+        "id": "t24"
+      },
+      {
+        "d": true,
+        "id": "t25"
+      },
+      {
+        "d": true,
+        "id": "t26"
+      },
+      {
+        "d": true,
+        "id": "t27"
+      }
+    ]
+  },
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "d": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "d"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "usage": {
+    "completion_tokens": 359,
+    "prompt_tokens": 1427
+  }
+}
